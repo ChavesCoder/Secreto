@@ -1,0 +1,90 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.8px;
+  }
+/* Header onde se encontra o menu */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    background-color: #fff;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  
+  .logo img {
+    width: 80%;
+  }
+  nav{
+    margin-right: 5%;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+    
+  }
+  
+  .entrar {
+    padding: 8px 16px;
+    background-color: #F8F8F8;
+  }
+  /* Final do menu */
+
+
+  /* Conteudo do site */
+  main {
+    display: flex;
+    flex-direction: column;
+      /* background-color: aqua; */
+  }
+  .inicio{
+    background-image: url('img/bibliaAberta.jpg');
+    width: 80%;
+    margin: auto;
+    height: 60vh;  
+    background-size:  auto;
+    background-position: 100%;
+    background-repeat: no-repeat;
+  }
+  .inicio h1 {
+    /* background-color: blue; */
+    /* margin-left: 10%; */
+    margin-top: 120px;
+    font-size: 2.5em;
+    line-height: 1.1;
+    width: 100%;
+    font-weight: 500;
+  
+  }
+  
+  .linha {
+    width: 60%;
+    height: 10px;
+    background-color: black;
+    margin-top: 5px;
+  }
+  
+  .image{
+  }
+  .image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Sobre nos */
+  
