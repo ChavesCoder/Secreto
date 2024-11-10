@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main style="flex-direction: row;">
+        <div class="container-entrarESQ">
+            <img class="logoEntrar" src="img/LogoSecretoBranco.png" alt="logo da Secreto">
+            <div class="conteudoEntrarEsq">
+                <h2>
+                    Leia devocionais, Jogue e conheça Deus todos os dias.
+                </h2>
+            </div>
+            <div class="conteudoEntrarEsq" style="justify-content: left; margin-left: 17.5%;">
+                <a href="">Conheça Secreto</a>
+            </div>
+            <div class="imgEntrarEsq">
+                <img class="celularBiblia" src="img/celularBiblia.png" alt="Celular com a Biblia">
+            </div>
+        </div>
+        <div class="container-entrarDIR">
+            <div class="conteudoEntrarDir CadastrarEnvio">
+                <h1>Criar conta</h1>
+                <p>Já possui uma conta? <a href="">Entrar</a></p>
+
+                <input onblur="validarNome()" class="Entrar-campos" type="text" placeholder="Nome" id="ipt_nome"
+                    style="margin-bottom: 3px;">
+                <span id="resticaoNome">O nome é obrigatorio</span>
+
+                <input onblur="validarSobrenome()" class="Entrar-campos" type="text" placeholder="Sobrenome"
+                    id="ipt_sobrenome" style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoSobreNome">O sobrenome é obrigatorio</span>
+
+                <input onblur="validarEmail()" class="Entrar-campos" type="email" placeholder="E-mail" id="ipt_email"
+                    style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoEmail">O e-mail é obrigatorio</span>
+                <span id="resticaoEmail2">Endereço de e-mail inválido</span>
+
+                <input oninput="validarSenha()" class="Entrar-campos" type="password" placeholder="Senha" id="ipt_senha"
+                    style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoSenha">A senha deve ter pelo menos 12 caracteres</span>
+                <span style="color: #9e9e9e;
+                    font-size: 0.9rem; display: block;">Minímo de 12 caracteres</span>
+
+                <input oninput="validarConfirmarSenha()" class="Entrar-campos" type="password"
+                    placeholder="Confirmar Senha" id="ipt_confirmarsenha" style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoConfirmarSenha">As senhas devem corresponder</span>
+
+                <div class="termos">
+                    <p>Ao se inscrever, você concorda com nossos <a href="" style="font-weight: 600;">Termos</a> e <a
+                            href="" style="font-weight: 600;">Política de Privacidade</a>.</p>
+                </div>
+                <button onclick="cadastrar()" class="btnCadastrar">Cadastrar</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    var valido = 0
+    var senha = ""
+    var nome = ""
+    var sobrenome = ""
+    var email = ""
+    var confirmarSenha = ""
+
+    function validarNome() {
+        nome = ipt_nome.value
+
+        if (nome == "") {
+            ipt_nome.style.border = "solid 1px #E82828"
+            resticaoNome.style.display = "block"
+        } else {
+            ipt_nome.style.border = "solid 0.5px #b9b9b9"
+            resticaoNome.style.display = "none"
+            valido++
+
+        }
+    }
+    function validarSobrenome() {
+        sobrenome = ipt_sobrenome.value
+
+        if (sobrenome == "") {
+            ipt_sobrenome.style.border = "solid 1px #E82828"
+            resticaoSobreNome.style.display = "block"
+        } else {
+            ipt_sobrenome.style.border = "solid 0.5px #b9b9b9"
+            resticaoSobreNome.style.display = "none"
+            valido++
+        }
+    }
+    function validarEmail() {
+        email = ipt_email.value
+
+        if (email == "") {
+            ipt_email.style.border = "solid 1px #E82828"
+            resticaoEmail.style.display = "block"
+            resticaoEmail2.style.display = "none"
+        } else {
+
+            if (email.includes('@') == false || email.includes('.com') == false) {
+                ipt_email.style.border = "solid 1px #E82828"
+                resticaoEmail.style.display = "none"
+                resticaoEmail2.style.display = "block"
+
+            } else {
+                ipt_email.style.border = "solid 0.5px #b9b9b9"
+                resticaoEmail.style.display = "none"
+                resticaoEmail2.style.display = "none"
+                valido++
+            }
+        }
+    }
+    function validarSenha() {
+        senha = ipt_senha.value
+
+        if (senha.length < 12) {
+            ipt_senha.style.border = "solid 1px #E82828"
+            resticaoSenha.style.display = "block"
+        } else {
+            ipt_senha.style.border = "solid 0.5px #b9b9b9"
+            resticaoSenha.style.display = "none"
+            valido++
+        }
+    }
+    function validarConfirmarSenha() {
+        confirmarSenha = ipt_confirmarsenha.value
+
+        if (senha != confirmarSenha) {
+            ipt_confirmarsenha.style.border = "solid 1px #E82828"
+            resticaoConfirmarSenha.style.display = "block"
+        } else {
+            ipt_confirmarsenha.style.border = "solid 0.5px #b9b9b9"
+            resticaoConfirmarSenha.style.display = "none"
+            valido++
+        }
+    }
+    function cadastrar() {
+        if (senha == "" || sobrenome == "" || email == "" || confirmarSenha == "" || nome == "") {
+            alert("Preencha todos os campos")
+        } else {
+            if (valido < 5) {
+                alert(`Não é possivel cadastrar ${valido}`)
+            } else {
+                alert(`cadastrado ${valido}`)
+            }
+        }
+
+    }
+</script>
+
+<!-- AINDA PRECISO VERIFICAR OU MELHORAR A LOGICA DAS VALIDAÇÕES -->

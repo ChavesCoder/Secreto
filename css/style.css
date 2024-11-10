@@ -328,7 +328,7 @@ footer p {
 }
 
 .conteudoEntrarDir {
-  width: 50%;
+  width: 55%;
 }
 
 .conteudoEntrarDir h1 {
@@ -342,14 +342,13 @@ footer p {
   color: var(--corTextos);
 }
 
-.conteudoEntrarDir a {
+.EntrarEnvio a {
   text-decoration: none;
   font-weight: 700;
   transition: all 0.5s ease;
-
   color: var(--corTextos);
 }
-.conteudoEntrarDir a:hover {
+.EntrarEnvio a:hover {
   color: var(--roxoSecreto);
 }
 
@@ -362,9 +361,9 @@ footer p {
   width: 100%;
 }
 
-.Entrar-campos:focus {
+.EntrarEnvio .Entrar-campos:focus {
   outline: none;
-  border: solid 1.5px var(--roxoSecreto);
+  border: solid 1.5px #3c3c3c;
   color: var(--corTextos);
 }
 
@@ -373,9 +372,9 @@ footer p {
   justify-content: space-between;
   align-items: center;
 }
-.btnEntrar button{
+.conteudoEntrarDir button{
   border-radius: 2px;
-  padding: 10px;
+  padding: 12px 15px;
   background-color: #ebebeb;
   color: #3c3c3c;
   border: none;
@@ -387,4 +386,54 @@ footer p {
   cursor: pointer;
   background-color: var(--roxoSecreto);
   color: #fff;
+}
+.btnEntrar a{
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.btnEntrar a:hover{
+  color: #3c3c3c;
+}
+/* TELA CADASTRAR */
+.btnCadastrar:hover{
+  cursor: pointer;
+  background-color: var(--laranjaSecreto);
+  color: #fff;
+}
+
+.CadastrarEnvio a {
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.5s ease;
+  color: var(--corTextos);
+}
+.CadastrarEnvio a:hover {
+  color: var(--laranjaSecreto);
+}
+.termos p{
+  font-size: 0.9rem; 
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.termos a{
+  text-decoration: underline;
+}
+.termos a:hover{
+  color: #3c3c3c;
+}
+
+.CadastrarEnvio .Entrar-campos:focus {
+  outline: none;
+  border: solid 1.5px #3c3c3c;
+  z-index: 99;
+  color: var(--corTextos);
+ }
+
+/* input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+} */
+
+.CadastrarEnvio span{
+  color: var(--vermelhoSecreto);
+  display: none;
 }
