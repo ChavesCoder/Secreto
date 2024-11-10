@@ -13,15 +13,15 @@
     rel="stylesheet">
 </head>
 
-<body>
+<body id="inicio">
   <!-- Cabeçalho com menu de navegação -->
   <header>
     <div class="logo"><img src="img/LogoSecreto2.png" alt="Logo do site Secreto"></div>
     <nav>
       <ul>
-        <li><a href="#sobre-nos">Sobre nós</a></li>
-        <li><a href="#propostas">Propostas</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a class="menuSobrenos" href="#SobreNos">Sobre nós</a></li>
+        <li><a class="menuProposta" href="#Propostas">Propostas</a></li>
+        <li><a class="menuFaleconosco" href="#faleConosco">Contato</a></li>
         <li><a href="#entrar" class="entrar">Entrar</a></li>
       </ul>
     </nav>
@@ -31,9 +31,86 @@
   <main>
     <div class="inicio">
       <h1>Incentivando e desafiando você a <br>buscar intimidade com Deus diariamente.</h1>
-      <div class="linha"></div>
+      <div class="linha" style="background-color: black; width: 60%; height: 10px;"></div>
+    </div>
+    <div id="SobreNos" class="container-conteudo">
+      <h1 class="titulo">Sobre a Secreto</h1>
+      <div class="linha" style="background-color:#E82828;"></div>
+      <p class="texto" style="width: 55%;">
+
+        Acreditamos sinceramente que um ritmo diário de busca de intimidade com Deus tem o poder de transformar vidas,
+        como transformou a vida do fundador da Secreto. Natã, um jovem que tinha muitas frustrações e dúvidas, encontrou
+        em Deus e em Sua palavra, Jesus. o Caminho, a Verdade e a Vida. E sua vida nunca mais foi a mesma.
+        <br><br>
+        É por esse testemunho e por muitos outros que a Secreto cria experiências biblicamente centradas e culturalmente
+        relevantes, que encorajam e desafiam as pessoas a buscar a Deus ao longo de cada dia, para que encontrem em Deus
+        bem-estar e saúde emocional e espiritual.
+
+        É por meio dessas experiências que criamos oportunidades adequadas à rotina diária de qualquer pessoa,
+        ajudando-as a formar um ritmo espiritualmente rico de busca de intimidade com Deus.
+
+      </p>
+    </div>
+    <div id="Propostas" class="container-conteudo">
+      <h1 class="titulo">Nossas Propostas</h1>
+      <div class="linha" style="background-color:#E8CF28 ;"></div>
+      <div class="container-cards">
+        <div class="card">
+          <img src="img/gg--games (1).png" alt="icone de um controle de video game">
+          <h3>Mini-Games</h3>
+          <p class="texto texto-card">Mini-games, que te permitem aprender mias da biblia
+            jogando e se divertindo. jogue e teste o seu nivel de conhecimento!
+          </p>
+        </div>
+        <div class="card">
+          <img src="img/mynaui--book.png" alt="icone de um livro">
+          <h3>Devocionais</h3>
+          <p class="texto texto-card"> Para que você, possa ler diariamente, te conectando com a palavra de Deus e te
+            trazendo respostas constantemente!</p>
+        </div>
+        <div class="card">
+          <img src="img/octicon--people-16.png" alt="icone de um pessoa e outra atras">
+          <h3>Personagens</h3>
+          <p class="texto texto-card">Mais sobre personagens biblicos, e seus feitos. Para que você conheça os grandes
+            homens e mulheres da biblia!</p>
+        </div>
+      </div>
+    </div>
+    <div id="faleConosco" class="container-conteudo">
+      <h1 class="titulo">Fale conosco</h1>
+      <div class="linha" style="background-color: #2876E8;"></div>
+      <div class="contato">
+        <form action="">
+          <input class="Form-campos" type="text" placeholder="Nome">
+          <input class="Form-campos" type="text" placeholder="Email">
+          <textarea class="Form-campos" name="" id="" placeholder="Mensagem"
+            style="resize: none; height: 280px;"></textarea>
+          <button class="Form-campos Form-botão" style="border: none;">Enviar</button>
+        </form>
+      </div>
     </div>
   </main>
+  <footer>
+    <div class="imgFooter">
+      <img src="img/LogoSecretoBranco.png" alt="logo da Secreto">
+    </div>
+    <p>Secreto © 2024. Todos os direitos reservados. </p>
+    <div class="redeSociais">
+      <a href=""><img src="img/f7--logo-linkedin.png" alt=""></a>
+      <a href=""><img src="img/ri--instagram-fill.png" alt=""></a>
+      <a href=""><img src="img/jam--github.png" alt=""></a>
+    </div>
+  </footer>
+  <a href="#inicio" id="myBtn"><img src="img/ix--arrow-up.png" alt="icone de seta para cima"></a>
 </body>
 
 </html>
+<script>
+  window.addEventListener('scroll', function () {
+    if (document.documentElement.scrollTop > 20) {
+      myBtn.style.opacity = "1";
+    } else {
+      myBtn.style.opacity = "0";
+    }
+  });
+</script>
