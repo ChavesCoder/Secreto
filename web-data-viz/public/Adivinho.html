@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secreto</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+<style>
+    #pergunta {
+        font-size: 2em;
+        font-weight: 600;
+        margin: 70px 0px 20px 0px;
+    }
+
+    .botoes {
+        margin: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        background-color: #f5d42e;
+        color: white;
+        font-weight: 600;
+        border: solid 1px #f5d42e;
+    }
+    button:hover{
+        background-color: #d4b311;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: green;
+    }
+
+    .adivinhoJogo {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .adivinhoJogo h1 {
+        font-size: 2.5rem;
+        color: rgb(0, 0, 0);
+        margin-bottom: 60px;
+        width: 40%;
+        border-bottom: solid 8px #f5d42e;
+        margin-top: 80px;
+    }
+    .conteudoAdivinho{
+        background-color: rgb(224, 242, 237);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="#" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="#" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="adivinhoJogo">
+            <h1>Jogo Adivinho</h1>
+            <div class="conteudoAdivinho">
+                <div id="pergunta">Seu personagem é homem?</div>
+                <div class="botoes">
+                    <button id="sim">Sim</button>
+                    <button id="nao">Não</button>
+                    <button onclick="reiniciarAdivinho()" id="reiniciar" style="display: none;">Jogar novamente</button> 
+                </div>
+                <div id="resultado"></div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
+<script>
+
+    var arvore = {
+        pergunta: "Seu personagem é homem?",
+        sim: {
+            pergunta: "Seu personagem está no Velho Testamento?",
+            sim: {
+                pergunta: "Seu personagem foi um rei?",
+                sim: {
+                    pergunta: "Derrotou um gigante?",
+                    sim: { personagem: "Davi" },
+                    nao: {
+                        pergunta: "Construiu o templo de Deus?",
+                        sim: { personagem: "Salomão" },
+                        nao: { personagem: "Saul" }
+                    }
+                },
+                nao: {
+                    pergunta: "Seu personagem foi um profeta ou juiz?",
+                    sim: {
+                        pergunta: "Foi engolido por um grande peixe?",
+                        sim: { personagem: "Jonas" },
+                        nao: {
+                            pergunta: "Sobreviveu na cova dos leões?",
+                            sim: { personagem: "Daniel" },
+                            nao: {
+                                pergunta: "Liderou uma batalha com 300 homens?",
+                                sim: { personagem: "Gideão" },
+                                nao: {
+                                    pergunta: "Tinha força extraordinária por causa de seu cabelo?",
+                                    sim: { personagem: "Sansão" },
+                                    nao: {
+                                        pergunta: "Profetizou sobre o nascimento de Jesus?",
+                                        sim: { personagem: "Isaías" },
+                                        nao: { personagem: "Jeremias" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    nao: {
+                        pergunta: "Seu personagem foi um patriarca ou figura importante?",
+                        sim: {
+                            pergunta: "Foi vendido por seus irmãos e se tornou governador do Egito?",
+                            sim: { personagem: "José do Egito" },
+                            nao: {
+                                pergunta: "Construiu uma arca para salvar sua família?",
+                                sim: { personagem: "Noé" },
+                                nao: {
+                                    pergunta: "Teve um filho na velhice?",
+                                    sim: {
+                                        pergunta: "Tentou sacrificar seu filho por obediência?",
+                                        sim: { personagem: "Abraão" },
+                                        nao: { personagem: "Jacó" }
+                                    },
+                                    nao: {
+                                        pergunta: "Foi morto por inveja do irmão?",
+                                        sim: { personagem: "Abel" },
+                                        nao: {
+                                            pergunta: "Matou seu irmão?",
+                                            sim: { personagem: "Caim" },
+                                            nao: { personagem: "Adão" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        nao: { personagem: "Arão" }
+                    }
+                }
+            },
+            nao: {
+                pergunta: "Seu personagem foi um apóstolo?",
+                sim: {
+                    pergunta: "Negou Jesus?",
+                    sim: { personagem: "Pedro" },
+                    nao: {
+                        pergunta: "Escreveu muitas cartas?",
+                        sim: { personagem: "Paulo" },
+                        nao: {
+                            pergunta: "Foi o discípulo amado?",
+                            sim: { personagem: "João" },
+                            nao: {
+                                pergunta: "Foi irmão de João?",
+                                sim: { personagem: "Tiago" },
+                                nao: {
+                                    pergunta: "Duvidou da ressurreição de Jesus?",
+                                    sim: { personagem: "Tomé" },
+                                    nao: { personagem: "Judas" }
+                                }
+                            }
+                        }
+                    }
+                },
+                nao: {
+                    pergunta: "Seu personagem esteve com Jesus?",
+                    sim: {
+                        pergunta: "Foi carpinteiro e pai terreno de Jesus?",
+                        sim: { personagem: "José (pai de Jesus)" },
+                        nao: {
+                            pergunta: "Era um coletor de impostos?",
+                            sim: { personagem: "Zaqueu" },
+                            nao: {
+                                pergunta: "Batizou Jesus?",
+                                sim: { personagem: "João Batista" },
+                                nao: {
+                                    pergunta: "Foi o primeiro mártir cristão?",
+                                    sim: { personagem: "Estevão" },
+                                    nao: { personagem: "Barnabé" }
+                                }
+                            }
+                        }
+                    },
+                    nao: { personagem: "Timóteo" }
+                }
+            }
+        },
+        nao: {
+            pergunta: "Seu personagem é uma mulher?",
+            sim: {
+                pergunta: "Seu personagem está no Velho Testamento?",
+                sim: {
+                    pergunta: "Escondeu espiões?",
+                    sim: { personagem: "Raabe" },
+                    nao: {
+                        pergunta: "Foi uma rainha?",
+                        sim: {
+                            pergunta: "Salvou seu povo?",
+                            sim: { personagem: "Ester" },
+                            nao: { personagem: "Rainha de Sabá" }
+                        },
+                        nao: {
+                            pergunta: "Teve um papel importante na liderança?",
+                            sim: {
+                                pergunta: "Foi uma juíza?",
+                                sim: { personagem: "Débora" },
+                                nao: {
+                                    pergunta: "Colocou seu filho em um cesto no rio?",
+                                    sim: { personagem: "Joquebede" },
+                                    nao: {
+                                        pergunta: "Cantou após a travessia do Mar Vermelho?",
+                                        sim: { personagem: "Miriam" },
+                                        nao: { personagem: "Ana, mãe de Samuel" }
+                                    }
+                                }
+                            },
+                            nao: {
+                                pergunta: "Foi esposa de Abraão?",
+                                sim: { personagem: "Sara" },
+                                nao: { personagem: "Jezabel" }
+                            }
+                        }
+                    }
+                },
+                nao: {
+                    pergunta: "Foi seguidora de Jesus?",
+                    sim: {
+                        pergunta: "Foi a mãe de Jesus?",
+                        sim: { personagem: "Maria" },
+                        nao: {
+                            pergunta: "Foi a primeira a ver Jesus ressuscitado?",
+                            sim: { personagem: "Maria Madalena" },
+                            nao: {
+                                pergunta: "Teve uma irmã chamada Maria?",
+                                sim: { personagem: "Marta" },
+                                nao: { personagem: "Lídia" }
+                            }
+                        }
+                    },
+                    nao: {
+                        pergunta: "Foi uma mulher de destaque no Novo Testamento?",
+                        sim: {
+                            pergunta: "Ajudou na propagação do evangelho?",
+                            sim: { personagem: "Priscila" },
+                            nao: { personagem: "Eunice" }
+                        },
+                        nao: { personagem: "Dalila" }
+                    }
+                }
+            }
+        }
+    };
+
+
+
+    // Referências aos elementos
+    var perguntaEl = document.getElementById("pergunta");
+    var botaoSim = document.getElementById("sim");
+    var botaoNao = document.getElementById("nao");
+    var resultadoEl = document.getElementById("resultado");
+
+    // Variável de estado para a posição atual na árvore
+    var noAtual = arvore;
+
+    // Função para exibir a pergunta ou resultado
+    function atualizarPergunta() {
+        if (noAtual.personagem) {
+            perguntaEl.textContent = `Eu acho que você está pensando em: ${noAtual.personagem}!`;
+            reiniciar.style.display = "block"
+            resultadoEl.innerHTML = `
+            Acertei? Se não, me ensine! 
+            <button id="ensinar">Ensinar</button>`
+            ;
+            botaoSim.style.display = "none";
+            botaoNao.style.display = "none";
+
+            // Evento para ensinar um novo personagem
+            document.getElementById("ensinar").onclick = ensinarPersonagem;
+        } else {
+            perguntaEl.textContent = noAtual.pergunta;
+        }
+    }
+
+    // Função para aprender novos personagens
+    function ensinarPersonagem() {
+        var novoPersonagem = prompt("Qual personagem você estava pensando?");
+        var novaPergunta = prompt(`O que diferencia ${novoPersonagem} de ${noAtual.personagem}?`);
+
+        // Adicionar a nova pergunta e personagem na árvore
+        var personagemAntigo = noAtual.personagem;
+        noAtual.personagem = null;
+        noAtual.pergunta = novaPergunta;
+        noAtual.sim = { personagem: novoPersonagem };
+        noAtual.nao = { personagem: personagemAntigo };
+
+        alert("Obrigado por me ensinar! Vamos jogar de novo.");
+        reiniciarJogo();
+    }
+
+    // Eventos dos botões
+    botaoSim.onclick = () => {
+        noAtual = noAtual.sim;
+        atualizarPergunta();
+    };
+    botaoNao.onclick = () => {
+        noAtual = noAtual.nao;
+        atualizarPergunta();
+    };
+
+    // Reiniciar o jogo
+    function reiniciarAdivinho() {
+        noAtual = arvore;
+        resultadoEl.innerHTML = "";
+        reiniciar.style.display = "none";
+        botaoSim.style.display = "inline-block";
+        botaoNao.style.display = "inline-block";
+        atualizarPergunta();
+    }
+
+    // Inicia o jogo
+    reiniciarJogo();
+</script>

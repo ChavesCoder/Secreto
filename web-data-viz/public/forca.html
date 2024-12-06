@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    img {
+        width: 35%;
+    }
+
+    #exibicao_palavra {
+        margin-left: -30px;
+        font-size: 3em;
+        margin-bottom: 35px;
+        font-weight: 600;
+    }
+
+    #letras_tentadas {
+        font-size: 2em;
+        color:#f5d42e ;
+        font-weight: bold;
+        margin-bottom: 35px;
+        margin-left: 45px;
+
+    }
+
+    #div_mensagem {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    #botao_reiniciar {
+        display: none;
+        margin: auto;
+        background-color: #4CAF50;
+        width: 20%;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #botao_reiniciar:hover {
+        background-color: #3c823e;
+    }
+    .jogoForca{
+        width: 80%;
+        margin: 80px auto;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+    .jogoForca h1{
+        font-size: 2.5rem;
+        color: rgb(0, 0, 0);
+        margin-bottom: 20px;
+        width: 40%;
+        border-bottom: solid 8px #f5d42e;
+    }
+    .forca{
+        display: flex;
+        align-items: end;
+        margin-left: -40px;
+        width: 900px;
+    }
+    #entrada_letra{
+        width: 50%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+    button{
+        padding: 10px;
+        width: 10%;background-color: #f5d42e;
+        border: 2px solid #f5d42e;
+        color: #fff;
+        border-radius: 2px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    button:hover{
+        cursor: pointer;
+        background-color:  #eecc21;
+        border-color: #eecc21;
+    }
+</style>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="#" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="#" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="jogoForca">
+            <h1>Jogo da Forca</h1>
+            <div class="forca">
+                <img id="imagem" src="img/forca0.png">
+                <div id="exibicao_palavra"></div>
+                <div id="letras_tentadas"></div>
+            </div>
+            <div class="letraFoca">
+                <input type="text" id="entrada_letra" placeholder="Chute uma letra" maxlength="1">
+            <button id="btn-chutar" onclick="chutarLetra()">Chutar</button>           
+            </div>
+            <div id="div_mensagem">Você ganhou!</div>
+            <div style="text-align: center;">
+                <button id="botao_reiniciar" onclick="iniciarJogo()">Novo jogo</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+<script>
+    var listaPalavras = ['jesus', 'judas', 'noe', 'asa', 'sara', 'abraao', 'paulo', 'boaz', 'timoteo', 'lidia','salmos','serpente','anjo']
+
+    var palavra;
+    var exibicaoPalavra;
+    var letrasTentadas;
+    var tentativasRestantes;
+    var numeroErros;
+
+    //FUNÇÃO PARA INICIAR O JOGO
+    function iniciarJogo() {
+
+        botao_reiniciar.style.display = 'none';
+        entrada_letra.disabled = false;
+        palavra = listaPalavras[Math.floor(Math.random() * listaPalavras.length)];
+
+        //Passando a palavra gerada com todos os caracteres com "_"
+        exibicaoPalavra = Array(palavra.length).fill('_');
+
+        letrasTentadas = [];
+        tentativasRestantes = 7;
+        numeroErros = 0;
+
+        atualizarExibicao();
+    }
+
+    function atualizarExibicao() {
+        exibicao_palavra.innerText = exibicaoPalavra.join(' ');
+        letras_tentadas.innerText = `${letrasTentadas.join(', ')}`;
+
+        div_mensagem.innerHTML = '';
+        imagem.src = `img/forca${numeroErros}.png`;
+
+        //Vendo se o jogo ja acabou
+        if (tentativasRestantes === 0) {
+            encerrarJogo('VOCÊ MORREU!');
+        } else if (!exibicaoPalavra.includes('_')) {
+            imagem.src = `img/forca8.png`;
+            encerrarJogo('Parabéns! Você venceu!');
+        }
+
+    }
+
+    function chutarLetra() {
+        var entradaLetra = entrada_letra;
+        var letra = entradaLetra.value.toLowerCase();
+
+        // Limitando e criando uma regra que so serao possivel letras de a-z 
+        if (!letra.match(/[a-z]/i)) {
+            alert('Por favor, insira uma letra válida.');
+            entrada_letra.focus()
+            entradaLetra.value = '';
+            return;
+        }
+
+        if (letrasTentadas.includes(letra)) {
+            alert('Você já tentou esta letra. Tente outra.');
+            entrada_letra.focus()
+            entradaLetra.value = '';
+            return;
+        }
+
+        letrasTentadas.push(letra);
+
+        if (palavra.includes(letra)) {
+            for (var i = 0; i < palavra.length; i++) {
+                if (palavra[i] === letra) {
+                    exibicaoPalavra[i] = letra;
+                }
+            }
+        } else {
+            tentativasRestantes--;
+            numeroErros++;
+        }
+
+        entrada_letra.focus()
+        entradaLetra.value = '';
+
+        atualizarExibicao();
+
+    }
+
+    function encerrarJogo(mensagem) {
+        entrada_letra.disabled = true;
+
+        div_mensagem.innerHTML = mensagem;
+        div_mensagem.style.display = 'block';
+        
+        botao_reiniciar.style.display = 'block';
+    }
+
+    window.load = iniciarJogo();
+</script>
+
+
+</html>

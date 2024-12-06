@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .profile-container {
+            text-align: center;
+            width: 500px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-picture-label {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 20px;
+            background-color: #218838;
+        }
+
+        #profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        form input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .update {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .update:hover {
+            background-color: #218838;
+        }
+
+        .delete:hover {
+            background-color: #c82333;
+        }
+
+        .conteudo-perfil {
+          height: 100vh;
+          margin: auto; 
+          display: flex;
+          align-items: center;
+          justify-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="#" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="#" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="conteudo-perfil">
+            <div class="profile-container">
+                <label for="profile-picture" class="profile-picture-label">
+                    <img id="foto" src="" alt="Foto de perfil">
+                </label>
+                <input type="file" id="profile-picture" accept="image/*" style="display: none;">
+
+                <form>
+                    <input type="text" placeholder="Nome" id="nome">
+                    <input type="text" placeholder="Sobrenome" id="sobrenome">
+                    <input type="email" placeholder="E-mail" id="email">
+                    <div class="buttons">
+                        <button type="button" id="update-profile" class="update">Atualizar Perfil</button>
+                        <button type="button" id="delete-profile" class="delete">Deletar Perfil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+<script>
+//     document.getElementById('profile-picture').addEventListener('change', function(event) {
+//     const file = event.target.files[0];
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = function(e) {
+//             document.getElementById('profile-img').src = e.target.result;
+//         };
+//         reader.readAsDataURL(file);
+//     }
+// });
+
+// document.getElementById('update-profile').addEventListener('click', function() {
+//     const nome = document.getElementById('nome').value;
+//     const sobrenome = document.getElementById('sobrenome').value;
+//     const email = document.getElementById('email').value;
+
+//     // Exemplo de alerta com os dados atualizados
+//     alert(`Perfil atualizado: \nNome: ${nome} \nSobrenome: ${sobrenome} \nE-mail: ${email}`);
+// });
+
+// document.getElementById('delete-profile').addEventListener('click', function() {
+//     if (confirm("Tem certeza que deseja deletar o perfil?")) {
+//         document.getElementById('nome').value = '';
+//         document.getElementById('sobrenome').value = '';
+//         document.getElementById('email').value = '';
+//         document.getElementById('profile-img').src = 'default-profile.png';
+//     }
+// });
+
+nome.value = sessionStorage.NOME_USUARIO
+foto.src = `img/${sessionStorage.FOTO_USUARIO}`
+// imagem.src = `img/forca8.png`;
+
+    </script>

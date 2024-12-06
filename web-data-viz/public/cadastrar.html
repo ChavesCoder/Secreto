@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="icon" href="img/S.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main style="flex-direction: row;">
+        <div class="container-entrarESQ">
+            <img class="logoEntrar" src="img/LogoSecretoBranco.png" alt="logo da Secreto">
+            <div class="conteudoEntrarEsq">
+                <h2>
+                    Leia devocionais, Jogue e conheça Deus todos os dias.
+                </h2>
+            </div>
+            <div class="conteudoEntrarEsq" style="justify-content: left; margin-left: 17.5%;">
+                <a href="index.html">Conheça Secreto</a>
+            </div>
+            <div class="imgEntrarEsq">
+                <img class="celularBiblia" src="img/celularBiblia.png" alt="Celular com a Biblia">
+            </div>
+        </div>
+        <div class="container-entrarDIR">
+            <div class="conteudoEntrarDir CadastrarEnvio">
+                <h1>Criar conta</h1>
+                <p>Já possui uma conta? <a href="entrar.html">Entrar</a></p>
+
+                <input onblur="validarNome()" class="Entrar-campos" type="text" placeholder="Nome" id="nome_input"
+                    style="margin-bottom: 3px;">
+                <span id="resticaoNome">O nome é obrigatorio</span>
+
+                <input onblur="validarSobrenome()" class="Entrar-campos" type="text" placeholder="Sobrenome"
+                    id="sobrenome_input" style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoSobreNome">O sobrenome é obrigatorio</span>
+
+                <input onblur="validarEmail()" class="Entrar-campos" type="email" placeholder="E-mail" id="email_input"
+                    style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoEmail">O e-mail é obrigatorio</span>
+                <span id="resticaoEmail2">Endereço de e-mail inválido</span>
+
+                <input oninput="validarSenha()" class="Entrar-campos" type="password" placeholder="Senha"
+                    id="senha_input" style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoSenha">A senha deve ter pelo menos 12 caracteres</span>
+                <span style="color: #9e9e9e;
+                    font-size: 0.9rem; display: block;">Minímo de 12 caracteres</span>
+
+                <input oninput="validarConfirmarSenha()" class="Entrar-campos" type="password"
+                    placeholder="Confirmar Senha" id="confirmacaosenha_input"
+                    style="margin-bottom: 3px; margin-top: 24px;">
+                <span id="resticaoConfirmarSenha">As senhas devem corresponder</span>
+
+                <div class="termos">
+                    <p>Ao se inscrever, você concorda com nossos <a href="" style="font-weight: 600;">Termos</a> e <a
+                            href="" style="font-weight: 600;">Política de Privacidade</a>.</p>
+                </div>
+                <button onclick="cadastrar()" class="btnCadastrar">Cadastrar</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    var valido = 0
+    var senha = ""
+    var nome = ""
+    var sobrenome = ""
+    var email = ""
+    var confirmarSenha = ""
+
+    function validarNome() {
+        nome = nome_input.value
+
+        if (nome == "") {
+            nome_input.style.border = "solid 1px #E82828"
+            resticaoNome.style.display = "block"
+        } else {
+            nome_input.style.border = "solid 0.5px #b9b9b9"
+            resticaoNome.style.display = "none"
+            valido++
+
+        }
+    }
+    function validarSobrenome() {
+        sobrenome = sobrenome_input.value
+
+        if (sobrenome == "") {
+            sobrenome_input.style.border = "solid 1px #E82828"
+            resticaoSobreNome.style.display = "block"
+        } else {
+            sobrenome_input.style.border = "solid 0.5px #b9b9b9"
+            resticaoSobreNome.style.display = "none"
+            valido++
+        }
+    }
+    function validarEmail() {
+        email = email_input.value
+
+        if (email == "") {
+            email_input.style.border = "solid 1px #E82828"
+            resticaoEmail.style.display = "block"
+            resticaoEmail2.style.display = "none"
+        } else {
+
+            if (email.includes('@') == false || email.includes('.com') == false) {
+                email_input.style.border = "solid 1px #E82828"
+                resticaoEmail.style.display = "none"
+                resticaoEmail2.style.display = "block"
+
+            } else {
+                email_input.style.border = "solid 0.5px #b9b9b9"
+                resticaoEmail.style.display = "none"
+                resticaoEmail2.style.display = "none"
+                valido++
+            }
+        }
+    }
+    function validarSenha() {
+        senha = senha_input.value
+
+        if (senha.length < 12) {
+            senha_input.style.border = "solid 1px #E82828"
+            resticaoSenha.style.display = "block"
+        } else {
+            senha_input.style.border = "solid 0.5px #b9b9b9"
+            resticaoSenha.style.display = "none"
+            valido++
+        }
+    }
+    function validarConfirmarSenha() {
+        confirmarSenha = confirmacaosenha_input.value
+
+        if (senha != confirmarSenha) {
+            confirmacaosenha_input.style.border = "solid 1px #E82828"
+            resticaoConfirmarSenha.style.display = "block"
+        } else {
+            confirmacaosenha_input.style.border = "solid 0.5px #b9b9b9"
+            resticaoConfirmarSenha.style.display = "none"
+            valido++
+        }
+    }
+
+    // API
+
+    // Array para armazenar empresas cadastradas para validação de código de ativação 
+    let listaEmpresasCadastradas = [];
+
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value + " " + sobrenome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacaosenha_input.value;
+        // var codigoVar = codigo_input.value;
+        // var idEmpresaVincular
+
+        // Verificando se há algum campo em branco
+        // if (
+        //     nomeVar == "" ||
+        //     emailVar == "" ||
+        //     senhaVar == "" ||
+        //     confirmacaoSenhaVar == "" 
+        //     // || codigoVar == ""
+        // ) {
+        //     cardErro.style.display = "block";
+        //     mensagem_erro.innerHTML =
+        //         "(Mensagem de erro para todos os campos em branco)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // } else {
+        //     setInterval(sumirMensagem, 5000);
+        // }
+
+        // // Verificando se o código de ativação é de alguma empresa cadastrada
+        // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+        //     if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+        //         idEmpresaVincular = listaEmpresasCadastradas[i].id
+        //         console.log("Código de ativação válido.");
+        //         break;
+        //     } else {
+        //         cardErro.style.display = "block";
+        //         mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+        //         finalizarAguardar();
+        //     }
+        // }
+        if (senha == "" || sobrenome == "" || email == "" || confirmarSenha == "" || nome == "") {
+            alert("Preencha todos os campos")
+        } else {
+            if (valido < 5) {
+                alert(`Não é possivel cadastrar ${valido}`)
+            } else {
+                alert(`cadastrado ${valido}`)
+                // Enviando o valor da nova input
+                fetch("/usuarios/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        nomeServer: nomeVar,
+                        emailServer: emailVar,
+                        senhaServer: senhaVar
+                        // ,idEmpresaVincularServer: idEmpresaVincular
+                    }),
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            // cardErro.style.display = "block";
+
+                            // mensagem_erro.innerHTML =
+                            //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                            setTimeout(() => {
+                                window.location = "entrar.html";
+                            }, "2000");
+
+                            limparFormulario();
+                            // finalizarAguardar();
+                        } else {
+                            throw "Houve um erro ao tentar realizar o cadastro!";
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                        // finalizarAguardar();
+                    });
+
+                return false;
+            }
+
+            // Listando empresas cadastradas 
+            function listar() {
+                fetch("/empresas/listar", {
+                    method: "GET",
+                })
+                    .then(function (resposta) {
+                        resposta.json().then((empresas) => {
+                            empresas.forEach((empresa) => {
+                                listaEmpresasCadastradas.push(empresa);
+
+                                console.log("listaEmpresasCadastradas")
+                                console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+                            });
+                        });
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+            }
+        }
+    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none";
+    // }
+</script>
+
+<!-- AINDA PRECISO VERIFICAR OU MELHORAR A LOGICA DAS VALIDAÇÕES -->

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secreto</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .containerCruzadinha {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    #div_perguntas {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        padding-right: 30px;
+    }
+
+    #div_perguntas input {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #div_perguntas input:focus {
+        border: solid 2px #124ec7;
+        outline: none;
+        border-radius: 2px;
+    }
+
+    #div_perguntas h1 {
+        margin-top: 60px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+
+    #div_perguntas p {
+        text-align: center;
+        height: 80px;
+        font-size: 22px;
+        margin-bottom: 5px;
+        color: #2b2b2b;
+    }
+
+    #id_botoes {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5%;
+
+    }
+
+    .grid-container {
+        /* border: 20px #3e2dd6 solid; */
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: repeat(10, 40px);
+        /* 16 colunas de 20px */
+        grid-template-rows: repeat(9, 40px);
+        /* 16 linhas de 20px */
+        /* gap: 3px; */
+        /* Espaço entre as células */
+    }
+
+    .cell {
+        width: 40px;
+        background-color: #f8f8f8;
+        height: 40px;
+        text-align: center;
+        border: 0.1px solid #d3d3d3;
+        color: rgb(95, 95, 95);
+        /* Borda para visualizar as células */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .semuso {
+        background-color: #d3d3d3;
+    }
+
+    .num {
+        background-color: #f5d42e;
+
+        color: rgb(255, 255, 255);
+    }
+
+    .escondida {
+        display: none;
+    }
+
+    @keyframes surgir {
+        from {
+            opacity: 0;
+            transform: translateX(0px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animacao-surgir {
+        animation: surgir 0.8s ease-out;
+    }
+
+    .tituloJogo {
+        font-size: 2.5rem;
+        color: rgb(0, 0, 0);
+        margin-bottom: 60px;
+        width: 40%;
+        border-bottom: solid 8px #f5d42e;
+        margin-top: 80px;
+    }
+
+    span {
+        font-weight: 700;
+    }
+    #div_perguntas button {
+        padding: 10px;
+        border: none;
+        background-color: #f5d42e;
+        border-radius: 4px;
+        outline: none;
+        color: #f8f8f8;
+        font-weight: 500;
+        font-size: 16px;
+        animation: all 0.8s ease-out;
+
+    }
+
+    #div_perguntas button:hover {
+        cursor: pointer;
+        background-color: #ebca11;
+
+    }
+    #reiniciarCruzadinha{
+        display: none;
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="#" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="#" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="containerCruzadinha">
+            <h1 class="tituloJogo">Jogo Cruzadinha</h1>
+            <div style="display: flex; justify-content: space-between;">
+                <div id="div_perguntas">
+                    <h1 id="h1_titulo">Pergunta 1</h1>
+                    <p id="p_pergunta"> Comandou o povo hebreu contra Jericó</p>
+                    <button onclick="reiniciar()" id="reiniciarCruzadinha">Jogar novamente</button>
+                    <input type="text" id="ipt_resposta" placeholder="digite sua resposta">
+                    <div id="id_botoes">
+                        <button onclick="perguntar('anterior')">
+                            < Anterior </button>
+                                <button onclick="responder()" style="width: 40%;">Responder</button>
+                                <button onclick="perguntar('próxima')">Proxima ></button>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">1</div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">2</div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra1_j">J</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra2_d">D</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">5</div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">3</div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra3_j">J</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra1_o">O</span></div>
+                    <div class="cell num">4</div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra4_j">J</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra2_e">E</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra4_s">S</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra4_u">U</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_s">S</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">7</div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra1_s">S</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra2_u">U</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_a">A</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">6</div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra6_j">J</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra1_u">U</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra6_d">D</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra6_a">A</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra2_s">S</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_m">M</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra7_o">O</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra1_e">E</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">8</div>
+                    <div class="cell"> <span class="escondida animacao-surgir" id="palavra8_a">A</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra8_n">N</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_a2">A</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra7_a">A</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">9</div>
+                    <div class="cell"> <span class="escondida animacao-surgir" id="palavra9_s">S</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra9_a">A</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_r">R</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra9_a2">A</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell"> <span class="escondida animacao-surgir" id="palavra7_o2">O</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">10</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra10_s">S</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra10_i">I</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra10_n">N</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra10_a">A</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_i">I</span></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell semuso"></div>
+                    <div class="cell num">11</div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra11_s">S</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra11_i">I</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra11_m">M</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra5_a3">A</span></div>
+                    <div class="cell"><span class="escondida animacao-surgir" id="palavra11_o">O</span>
+
+
+
+                        <!-- Continue com mais células para preencher 16x16 -->
+                    </div>
+                </div>
+            </div>
+    </main>
+
+</body>
+
+</html>
+<script>
+
+    var lista_respostas = ['JOSUE', 'DEUS', 'JO', 'JESUS', 'SAMARIA', 'JUDAS', 'JOAO', 'ANA', 'SARA', 'SINAI', 'SIMAO']
+
+    var lista_perguntas = [
+        '<span id="pergunta1"> Comandou o povo hebreu contra Jericó <span>',
+        'Nosso criador, pai, amado e maravilhoso',
+        'Um dos livros de sabedoria',
+        'O caminho, a verdade e a vida',
+        'Cidade da mulher que Jesus, encontrou no poço',
+        'Aquele que traiu Jesus',
+        'O que se autointitulava O discipulo amado',
+        'Mãe do homem que ungiu Davi.',
+        'Riu quando Deus prometeu um filho',
+        'Monte onde moises recebe aa tabuas da lei.',
+        'Primeiro nome de pedro'
+    ]
+
+    var indexPergunta = 0;
+    var perguntasCertas = [];
+
+    // Função para passar a perguntar
+    function perguntar(mudar) {
+        var pergunta;
+
+        if (mudar == 'próxima' && indexPergunta <= 9) {
+            indexPergunta++;
+            ipt_resposta.disabled = false;
+            ipt_resposta.placeholder = `Digite sua resposta`
+            ipt_resposta.style.border = "0.5px solid #a7a7a7";
+            ipt_resposta.style.color = "black";
+        } else if (mudar == 'anterior' && indexPergunta >= 1) {
+            indexPergunta--;
+            ipt_resposta.disabled = false;
+            ipt_resposta.placeholder = `Digite sua resposta`
+            ipt_resposta.style.border = "0.5px solid #a7a7a7";
+            ipt_resposta.style.color = "black";
+        }
+
+        h1_titulo.innerHTML = `Pergunta ${indexPergunta + 1}`;
+        p_pergunta.innerHTML = lista_perguntas[indexPergunta];
+
+        if (perguntasCertas.includes(indexPergunta)) {
+            p_pergunta.style.color = "green"
+            ipt_resposta.disabled = true;
+            ipt_resposta.placeholder = `${lista_respostas[indexPergunta]}`
+        } else {
+            p_pergunta.style.color = "";
+        }
+    };
+
+    function responder() {
+        var resposta = ipt_resposta.value.toUpperCase()
+
+        // Dois styles para resetar a indicação de resposta errada
+        ipt_resposta.style.border = "";
+        ipt_resposta.style.color = "";
+
+        // Validações para validar se a resposta é válida E se está de acordo com a pergunta na tela
+        if (lista_respostas.indexOf(resposta) == 0 && indexPergunta == 0) {
+            palavra1_j.style.display = 'block';
+            palavra1_o.style.display = 'block';
+            palavra1_s.style.display = 'block';
+            palavra1_u.style.display = 'block';
+            palavra1_e.style.display = 'block';
+
+            perguntasCertas.push(0)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 1 && indexPergunta == 1) {
+            palavra2_d.style.display = 'block';
+            palavra2_e.style.display = 'block';
+            palavra2_u.style.display = 'block';
+            palavra2_s.style.display = 'block';
+
+            perguntasCertas.push(1)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 2 && indexPergunta == 2) {
+            palavra3_j.style.display = 'block';
+            palavra1_o.style.display = 'block';
+
+            perguntasCertas.push(2)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 3 && indexPergunta == 3) {
+            palavra4_j.style.display = 'block';
+            palavra2_e.style.display = 'block';
+            palavra4_s.style.display = 'block';
+            palavra4_u.style.display = 'block';
+            palavra5_s.style.display = 'block';
+
+            perguntasCertas.push(3)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 4 && indexPergunta == 4) {
+            palavra5_s.style.display = 'block';
+            palavra5_a.style.display = 'block';
+            palavra5_m.style.display = 'block';
+            palavra5_a2.style.display = 'block';
+            palavra5_r.style.display = 'block';
+            palavra5_i.style.display = 'block';
+            palavra5_a3.style.display = 'block';
+
+            perguntasCertas.push(4)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 5 && indexPergunta == 5) {
+            palavra6_j.style.display = 'block';
+            palavra1_u.style.display = 'block';
+            palavra6_d.style.display = 'block';
+            palavra6_a.style.display = 'block';
+            palavra2_s.style.display = 'block';
+
+            perguntasCertas.push(5)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 6 && indexPergunta == 6) {
+            palavra6_j.style.display = 'block';
+            palavra7_o.style.display = 'block';
+            palavra7_a.style.display = 'block';
+            palavra7_o2.style.display = 'block';
+
+            perguntasCertas.push(6)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 7 && indexPergunta == 7) {
+            palavra8_a.style.display = 'block';
+            palavra8_n.style.display = 'block';
+            palavra5_a2.style.display = 'block';
+
+            perguntasCertas.push(7)
+
+            perguntar('próxima');
+        }
+        else if (lista_respostas.indexOf(resposta) == 8 && indexPergunta == 8) {
+            palavra9_s.style.display = 'block';
+            palavra9_a.style.display = 'block';
+            palavra5_r.style.display = 'block';
+            palavra9_a2.style.display = 'block';
+
+            perguntasCertas.push(8)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 9 && indexPergunta == 9) {
+            palavra10_s.style.display = 'block';
+            palavra10_i.style.display = 'block';
+            palavra10_n.style.display = 'block';
+            palavra10_a.style.display = 'block';
+            palavra5_i.style.display = 'block';
+
+            perguntasCertas.push(9)
+
+            perguntar('próxima');
+
+        } else if (lista_respostas.indexOf(resposta) == 10 && indexPergunta == 10) {
+            palavra11_s.style.display = 'block';
+            palavra11_i.style.display = 'block';
+            palavra11_m.style.display = 'block';
+            palavra5_a3.style.display = 'block';
+            palavra11_o.style.display = 'block';
+
+            perguntasCertas.push(10)
+
+            perguntar('próxima');
+
+        } else {
+            // Styles para indicar que foi uma resposta errada
+            ipt_resposta.style.border = "2px solid red";
+            ipt_resposta.style.color = "red";
+
+        };
+        if (perguntasCertas.length == 11) {
+            h1_titulo.innerHTML = "Parabens, voce venceu!"
+            reiniciarCruzadinha.style.display = "block"
+            id_botoes.style.display = "none"
+            p_pergunta.innerHTML = "Você conhece da palavra, estude mais e se dedique! para continuar sempre aprendendo!" 
+            ipt_resposta.style.display = "none"
+        }
+
+        ipt_resposta.value = ""
+        ipt_resposta.focus()
+    }
+    function reiniciar(){
+            window.location.reload()
+        }
+</script>

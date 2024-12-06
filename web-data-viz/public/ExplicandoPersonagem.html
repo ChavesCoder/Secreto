@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="#" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="#" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="container-explicandoPersonagem">
+            <h1 id="nome">Davi</h1>
+            <p id="historia">Lorem ipsum dolor sit amet consectetur. Metus cursus diam sed leo vel. Euismod quam urna ut
+                in. Aenean
+                adipiscing ac nunc platea interdum feugiat morbi semper. A pretium nulla morbi eu est. Convallis
+                placerat consectetur convallis sem mi. Turpis egestas felis metus lorem duis neque. Imperdiet aenean
+                nulla in id augue. Aliquet arcu euismod leo non in mattis morbi. Purus elit ac et ut suspendisse sed
+                nec. Luctus scelerisque vitae vel semper suspendisse rutrum diam turpis. Congue tempor
+                <br><br>Lorem ipsum dolor sit amet consectetur. Metus cursus diam sed leo vel. Euismod quam urna ut in.
+                Aenean
+                adipiscing ac nunc platea interdum feugiat morbi semper. A pretium nulla morbi eu est. Convallis
+                placerat consectetur convallis sem mi. Turpis egestas felis metus lorem duis neque. Imperdiet aenean
+                nulla in id augue. Aliquet arcu euismod leo non in mattis morbi. Purus elit ac et ut suspendisse sed
+                nec. Luctus scelerisque vitae vel semper suspendisse rutrum diam turpis. Congue tempor
+            </p>
+            <button>Voltar</button>
+        </div>
+    </main>
+
+</body>
+
+</html>
+<script>
+    // Toggle menu visibility on small screens
+    // document.querySelector('.menu-toggle').addEventListener('click', () => {
+    //     document.querySelector('.sidebar').classList.toggle('open');
+    // });
+    // Pegar o ID do personagem da query string
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const personagemId = urlParams.get('id');
+
+    // // Fazer uma requisição para buscar os detalhes do personagem pelo ID
+    // fetch(`https://sua-api.com/personagens/${personagemId}`)
+    //     .then(response => response.json())
+    //     .then(personagem => {
+    //         // Exibir os detalhes do personagem na página
+    //         document.querySelector('#nome').innerText = personagem.nome;
+    //         document.querySelector('#descricao').innerText = personagem.descricao;
+    //         document.querySelector('#historia').innerText = personagem.historia;
+    //     })
+    //     .catch(error => console.error('Erro ao buscar personagem:', error));
+    window.onload = explicacao();
+    function explicacao() {
+        var idPersonagem = sessionStorage.getItem("ID_PERSONAGEM");
+        console.log("ID recuperado:", idPersonagem);
+        fetch(`/explicacao/explicacao/${idPersonagem}`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (json) {
+                    console.log("JSON recebido:", json);
+
+                    // Acesse diretamente o objeto se não for um array
+                    nome.innerText = `${json.nome}`;
+                    historia.innerText = `${json.historia}`;
+                });
+            } else {
+                console.error("Erro na resposta da API:", resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+
+</script>

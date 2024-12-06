@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="icon" href="img/S.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="devocional.html" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <!-- <a href="#" class="menu-item">
+                <img src="img/mynaui--book.png" alt="">
+                <span>Bíblia</span>
+            </a> -->
+            <a href="personagens.html" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="#" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+        <a href="#" class="menu-item logout">
+            <img src="img/mdi--logout.png">
+            <span>Sair</span>
+        </a>
+    </div>
+    <main class="conteudo-interno">
+        <div class="container-personagens">
+            <div class="card-personagens">
+                <h2>Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button onclick="explicacao(1)" data-id="1">explicacao1</button>
+            </div>
+            <div class="card-personagens">
+                <h2>Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button onclick="explicacao(2)" data-id="2">explicacao2</button>
+            </div>
+            <div class="card-personagens">
+                <h2>Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button onclick="explicacao(3)" data-id="3">explicacao3</button>
+            </div>
+            <div class="card-personagens">
+                <h2>Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button onclick="explicacao(4)" data-id="4">explicacao4</button>
+            </div>
+            <div class="card-personagens">
+                <h2>Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button onclick="explicacao(5)" data-id="5">explicacao5</button>
+            </div>
+            <div class="card-personagens" data-id="2">
+                <h2 id="teste2">Davi</h2>
+                <p>De pastor de ovelhas á Rei de Israel</p>
+                <button class="btn-explicacao" data-id="6" onclick="explicacao(6)">explicacao6</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+<script>
+    // Toggle menu visibility on small screens
+    // document.querySelector('.menu-toggle').addEventListener('click', () => {
+    //     document.querySelector('.sidebar').classList.toggle('open');
+    // });
+    var idpersonagensVar = 0
+    function explicacao(id) {
+    console.log(id); // Verifica se o ID está correto antes de enviar a requisição
+
+    fetch(`/explicacao/explicacao/${id}`, { // ID enviado na URL
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json);
+
+                // Armazena o ID no sessionStorage para reutilizar
+                sessionStorage.ID_PERSONAGEM = json.idpersonagens;
+
+                sessionStorage.setItem("ID_PERSONAGEM", id);
+
+                // Redireciona para a página desejada após 1 segundo
+                setTimeout(function () {
+                    window.location = "ExplicandoPersonagem.html";
+                }, 1000);
+            });
+        } else {
+            console.log("Nenhum resultado encontrado ou erro na requisição!");
+            alert("Nenhum dado encontrado!");
+        }
+    })
+    .catch(function (erro) {
+        console.error("Erro na requisição:", erro);
+    });
+
+    return false;
+}
+
+    
+//     function explicacao(id) {
+
+//         idpersonagensVar = id
+//         console.log(id)
+//         console.log(idpersonagensVar)
+        
+
+//         fetch(`/explicacao/explicacao/${idpersonagensVar}`, {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+        
+//     }).then(function (resposta) {
+//         console.log("ESTOU NO THEN DO entrar()!")
+
+//         if (resposta.ok) {
+//             console.log(resposta);
+
+//             resposta.json().then(json => {
+//                 console.log(json);
+//                 console.log(JSON.stringify(json));
+//                 sessionStorage.ID_PERSONAGEM = idpersonagensVar;
+//             });
+
+//         } else {
+
+//             console.log("Houve um erro ao tentar realizar a busca!");
+
+//             resposta.text().then(texto => {
+//                 console.error(texto);
+//                 // finalizarAguardar(texto);
+//             });
+//         }
+
+//     }).catch(function (erro) {
+//         console.log(erro);
+//     })
+
+//     return false;
+// }
+
+</script>

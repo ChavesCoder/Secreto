@@ -1,0 +1,721 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.8px;
+  scroll-behavior: smooth;
+}
+
+/* Declarando as variaveis das cores que usarei */
+:root {
+  --vermelhoSecreto: #E82828;
+  --amareloSecreto: #E8CF28;
+  --azulSecreto: #2876E8;
+  --cinzaSecreto: #f8f8f8;
+  --corTextos: #3c3c3c;
+  --roxoSecreto: #752EB4;
+  --laranjaSecreto: #EF8E34;
+  --verdeSecreto: #27B263;
+}
+
+/* Header onde se encontra o menu */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 50px;
+  background-color: #fff;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.logo img {
+  width: 80%;
+}
+
+nav {
+  margin-right: 5%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.menuSobrenos:hover {
+  color: var(--vermelhoSecreto);
+
+}
+
+.menuProposta:hover {
+  color: var(--amareloSecreto);
+}
+
+.menuFaleconosco:hover {
+  color: var(--azulSecreto);
+}
+
+.entrar {
+  border-radius: 2px;
+  padding: 8px 16px;
+  background-color: var(--cinzaSecreto);
+  transition: all 0.5s ease;
+}
+
+.entrar:hover {
+  background-color: var(--roxoSecreto);
+  color: #fff;
+}
+
+/* Final do menu */
+
+
+/* Conteudo do site */
+main {
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+
+.inicio {
+  background-image: url('/img/BibliaAberta.jpg');
+  width: 80%;
+  margin: auto;
+  height: 60vh;
+  background-size: auto;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.inicio h1 {
+  margin-top: 120px;
+  font-size: 2.5em;
+  line-height: 1.1;
+  font-weight: 500;
+
+}
+
+/* Tag para todas as linhas, as cores mexi no CSS interno */
+.linha {
+  width: 25%;
+  height: 8px;
+  margin-top: 5px;
+}
+
+.image img {
+  width: 300px;
+  height: 300px;
+}
+
+/* Sobre nos */
+.container-conteudo {
+  width: 80%;
+  margin: auto;
+}
+
+/* tag para todos os titulos */
+.titulo {
+  margin-top: 120px;
+  font-size: 2.8em;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.texto {
+  color: var(--corTextos);
+  font-size: 1.13rem;
+  margin-top: 30px;
+}
+
+/* Sobre nos acaba aqui */
+/* Propostas */
+.container-cards {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  border-radius: 2px;
+  background-color: #F8F8F8;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  width: 28%;
+  height: 100%;
+}
+
+.card h3 {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.texto-card {
+  font-size: 1rem;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* fim das propostas */
+
+/* Fale Conosco */
+.contato {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.contato form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.contato .Form-campos {
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1.1rem;
+  border: solid 0.5px #b9b9b9;
+  margin-bottom: 24px;
+}
+
+.contato .Form-campos:focus {
+  color: var(--corTextos);
+  border: solid 1.5px var(--azulSecreto);
+  outline: none;
+}
+
+.Form-botão {
+  border-radius: 2px;
+  color: #fff;
+  background-color: var(--azulSecreto);
+  font-weight: bold;
+}
+
+.Form-botão:hover {
+  cursor: pointer;
+  background-color: #1a5cbe;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 120px;
+  background-color: #000000;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgFooter {
+  width: 30%;
+  display: flex;
+  justify-content: right;
+  padding-right: 60px;
+}
+
+footer p {
+  width: 30%;
+  color: #fff;
+  text-align: center;
+}
+
+.redeSociais {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: left;
+  padding-left: 65px;
+  width: 30%;
+}
+
+.redeSociais img {
+  width: 56px;
+  height: 56px;
+}
+
+#btnSUBIR {
+  position: fixed;
+  border-radius: 2px;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  background-color: #000000;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+}
+
+#btnSUBIR img {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+}
+
+
+
+/* PAGINA ENTRAR */
+
+.container-entrarESQ {
+  position: fixed;
+  width: 40%;
+  height: 100vh;
+  background-color: #000000;
+}
+
+.container-entrarESQ .logoEntrar {
+  width: 40%;
+  padding: 30px;
+}
+
+.container-entrarESQ h2 {
+  color: #fff;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.container-entrarESQ .conteudoEntrarEsq {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-entrarESQ a {
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 12px 15px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: #3c3c3c;
+}
+
+.imgEntrarEsq img {
+  width: 70%;
+  margin-left: 14.5%;
+  height: 100%;
+  margin-top: 0px;
+}
+
+.container-entrarDIR {
+  margin-left: 40%;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteudoEntrarDir {
+  width: 55%;
+}
+
+.conteudoEntrarDir h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.conteudoEntrarDir p {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: var(--corTextos);
+}
+
+.EntrarEnvio a {
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.5s ease;
+  color: var(--corTextos);
+}
+
+.EntrarEnvio a:hover {
+  color: var(--roxoSecreto);
+}
+
+.Entrar-campos {
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 1.1rem;
+  border: solid 0.5px #b9b9b9;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.EntrarEnvio .Entrar-campos:focus {
+  outline: none;
+  border: solid 1.5px #3c3c3c;
+  color: var(--corTextos);
+}
+
+.conteudoEntrarDir .btnEntrar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conteudoEntrarDir button {
+  border-radius: 2px;
+  padding: 12px 15px;
+  background-color: #ebebeb;
+  color: #3c3c3c;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.5s ease;
+}
+
+.btnEntrar button:hover {
+  cursor: pointer;
+  background-color: var(--roxoSecreto);
+  color: #fff;
+}
+
+.btnEntrar a {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.btnEntrar a:hover {
+  color: #3c3c3c;
+}
+
+/* TELA CADASTRAR */
+.btnCadastrar:hover {
+  cursor: pointer;
+  background-color: var(--laranjaSecreto);
+  color: #fff;
+}
+
+.CadastrarEnvio a {
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.5s ease;
+  color: var(--corTextos);
+}
+
+.CadastrarEnvio a:hover {
+  color: var(--laranjaSecreto);
+}
+
+.termos p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.termos a {
+  text-decoration: underline;
+}
+
+.termos a:hover {
+  color: #3c3c3c;
+}
+
+.CadastrarEnvio .Entrar-campos:focus {
+  outline: none;
+  border: solid 1.5px #3c3c3c;
+  z-index: 99;
+  color: var(--corTextos);
+}
+
+/* input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+} */
+
+.CadastrarEnvio span {
+  color: var(--vermelhoSecreto);
+  display: none;
+}
+
+
+/* Conteudo interno */
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+}
+
+.sidebar img {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar .menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sidebar .menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px 40px;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.sidebar .menu-item span {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.sidebar .menu-item img {
+  width: 16%;
+  margin: 0px;
+}
+
+.sidebar .menu-item:hover {
+  background: #333;
+}
+
+.sidebar .logout {
+  margin-top: 90%;
+  width: 100%;
+}
+
+.conteudo-interno {
+  margin-left: 250px;
+}
+
+/* DEVOCIONAL */
+.container-versiculo {
+  background-color: var(--verdeSecreto);
+  padding: 40px;
+  margin: 40px auto 0px auto;
+  color: #FFFBE3;
+  border-radius: 2px;
+  width: 80%;
+}
+
+.container-versiculo h1 {
+  font-size: 1.6rem;
+}
+
+.container-versiculo h2 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.container-versiculo h3 {
+  letter-spacing: 1px;
+  font-size: 0.7rem;
+  margin-top: 10px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.conteudo-explicacao {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.conteudo-explicacao p {
+  color: rgba(40, 35, 21, 0.753);
+  font-size: 1.1rem;
+  line-height: 22px;
+  padding-left: 10px;
+  border-left: 8px #27B263 solid;
+}
+
+.conteudo-explicacao h3 {
+  margin: 20px 0px 14px 0px;
+  font-size: 1.6rem;
+  color: #27B263;
+}
+
+.btn-devocional {
+  margin: 15px 0px 20px 10%;
+}
+
+.btn-devocional button {
+  padding: 10px;
+  font-size: 1rem;
+  color: #838383;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+}
+
+.btn-devocional button:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--verdeSecreto);
+}
+
+
+/* Personagensm */
+.container-personagens {
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.card-personagens {
+  background-color: #4285f4;
+  color: #fff;
+  padding: 20px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-personagens:nth-child(2),
+.card-personagens:nth-child(5) {
+  background-color: #f4b400;
+}
+
+.card-personagens:nth-child(4) {
+  background-color: #9c27b0;
+}
+
+.card-personagens:nth-child(6) {
+  background-color: #db4437;
+}
+
+.card-personagens h2 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.card-personagens p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.card-personagens button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: start;
+}
+
+.card-personagens button:hover {
+  font-weight: 600;
+}
+
+.container-explicandoPersonagem {
+  width: 80%;
+  margin: 40px auto;
+}
+
+.container-explicandoPersonagem h1 {
+  border-bottom: 8px var(--azulSecreto) solid;
+  margin-top: 40px;
+  width: 10%;
+  font-size: 2.5rem;
+}
+
+.container-explicandoPersonagem p {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: var(--corTextos);
+}
+
+.container-explicandoPersonagem button {
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 1rem;
+  color: #838383;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+}
+
+.container-explicandoPersonagem button:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--azulSecreto);
+}
+
+/* TELA MINIGAMES */
+
+.container-minigames {
+  display: flex;
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-game {
+  background-color: var(--amareloSecreto);
+  padding: 30px;
+  height: 45%;
+  width: 32%;
+}
+
+.card-game p {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  height: 150px;
+}
+
+.card-game h2 {
+  color: rgb(67, 61, 44);
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.card-game a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #c79713;
+  padding: 10px;
+}
