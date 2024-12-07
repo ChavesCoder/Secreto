@@ -3,11 +3,11 @@ var explicacaoModel = require("../models/explicacaoModel");
 
 function explicacao(req, res) {
     // Captura o ID a partir dos parâmetros da URL
-    var idpersonagens = req.params.idpersonagens;
+    var idPersonagens = req.params.idPersonagens;
 
-    console.log(`Recebido ID: ${idpersonagens}`);
+    console.log(`Recebido ID: ${idPersonagens}`);
 
-    explicacaoModel.explicacao(idpersonagens).then(function (resultado) {
+    explicacaoModel.explicacao(idPersonagens).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado[0]); // Retorna apenas o primeiro registro
         } else {

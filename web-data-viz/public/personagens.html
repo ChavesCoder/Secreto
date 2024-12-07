@@ -47,37 +47,9 @@
         </nav>
     </div>
     <main class="conteudo-interno">
-        <div class="container-personagens">
-            <div class="card-personagens">
-                <h2>Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button onclick="explicacao(1)" data-id="1">explicacao1</button>
-            </div>
-            <div class="card-personagens">
-                <h2>Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button onclick="explicacao(2)" data-id="2">explicacao2</button>
-            </div>
-            <div class="card-personagens">
-                <h2>Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button onclick="explicacao(3)" data-id="3">explicacao3</button>
-            </div>
-            <div class="card-personagens">
-                <h2>Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button onclick="explicacao(4)" data-id="4">explicacao4</button>
-            </div>
-            <div class="card-personagens">
-                <h2>Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button onclick="explicacao(5)" data-id="5">explicacao5</button>
-            </div>
-            <div class="card-personagens" data-id="2">
-                <h2 id="teste2">Davi</h2>
-                <p>De pastor de ovelhas á Rei de Israel</p>
-                <button class="btn-explicacao" data-id="6" onclick="explicacao(6)">explicacao6</button>
-            </div>
+        <div id="containerPersonagens">
+            
+            
         </div>
     </main>
 
@@ -90,6 +62,88 @@
     //     document.querySelector('.sidebar').classList.toggle('open');
     // });
     var idpersonagensVar = 0
+
+    window.onload = colocarPersonagens();
+    // function colocarPersonagens(){
+    //     fetch("/colocarpersonagens/colocarPersonagens").then(function (resposta) {
+    //         if (resposta.ok) {
+    //             if (resposta.status == 204) {
+    //                 var devocional = document.getElementById("testeDevocional");
+    //             } else {
+    //                 resposta.json().then(function (resposta) {
+    //                     alert('Deu certo')
+    //                     // var devocionais = resposta[0]
+    //                     // sessionStorage.ID_DEVOCIOONAL = devocionais.idDevocional
+
+    //                     // livroDevocional.innerText = `${devocionais.livro}`
+    //                     // explicacaoDevocional.innerText = `${devocionais.explicacao}`
+    //                     // oracaoDevocional.innerText = `${devocionais.oracao}`
+    //                     // versiculoDevocional.innerText = `${devocionais.versiculo}`
+
+
+
+    //                 });
+    //             }
+    //         } else {
+    //             throw ('Houve um erro na API');
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.error(resposta);
+    //     });
+    // }
+
+    function colocarPersonagens() {
+    fetch("/colocarpersonagens/colocarPersonagens")
+        .then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    console.log("Nenhum personagem encontrado.");
+                } else {
+                    resposta.json().then(function (personagens) {
+                        // Chamar a função para renderizar os personagens no HTML
+                        renderizarPersonagens(personagens);
+                    });
+                }
+            } else {
+                throw new Error("Houve um erro na API");
+            }
+        })
+        .catch(function (erro) {
+            console.error(erro);
+        });
+}
+
+// Função para renderizar os personagens no contêiner HTML
+function renderizarPersonagens(personagens) {
+
+    personagens.forEach(personagem => {
+        // const container = document.createElement("containerPersonagens");
+        // Criação da div do card
+        const card = document.createElement("div");
+        card.classList.add("card-personagens");
+
+        // Nome do personagem
+        const titulo = document.createElement("h2");
+        titulo.textContent = personagem.nome;
+        card.appendChild(titulo);
+
+        // Descrição do personagem
+        const descricao = document.createElement("p");
+        descricao.textContent = personagem.descricao;
+        card.appendChild(descricao);
+
+        // Botão de explicação
+        const botao = document.createElement("button");
+        botao.textContent = "Ver mais";
+        botao.setAttribute("data-id", personagem.idPersonagens);
+        botao.onclick = () => explicacao(personagem.idPersonagens);
+        card.appendChild(botao);
+
+        // Adiciona o card ao container
+        containerPersonagens.appendChild(card);
+    });
+}
+
     function explicacao(id) {
     console.log(id); // Verifica se o ID está correto antes de enviar a requisição
 

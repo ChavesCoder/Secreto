@@ -12,7 +12,7 @@ var explicacaoController = require("../controllers/explicacaoController");
 //     // função a ser chamada quando acessar /explicacaos/listar
 //     explicacaoController.listar(req, res);
 // });
-router.get("/explicacao/:idpersonagens", function (req, res) {
+router.get("/explicacao/:idPersonagens", function (req, res) {
     explicacaoController.explicacao(req, res);
 })
 

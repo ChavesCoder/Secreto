@@ -25,6 +25,7 @@ var devocionaisRouter = require("./src/routes/devocionais");
 var personagensRouter = require("./src/routes/personagens");
 var explicacaoRouter = require("./src/routes/explicacao");
 var diarioRouter = require("./src/routes/diario");
+var colocarpersonagensRouter = require("./src/routes/colocarpersonagens");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -42,6 +43,7 @@ app.use("/devocionais", devocionaisRouter);
 app.use("/personagens", personagensRouter);
 app.use("/explicacao", explicacaoRouter)
 app.use("/diario", diarioRouter);
+app.use("/colocarpersonagens", colocarpersonagensRouter);
 
 
 app.listen(PORTA_APP, function () {

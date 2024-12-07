@@ -588,7 +588,7 @@ input[type="password"]::-ms-clear {
 
 
 /* Personagensm */
-.container-personagens {
+#containerPersonagens {
   margin: 40px auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

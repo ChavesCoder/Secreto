@@ -14,17 +14,16 @@ var database = require("../database/config");
 //     console.log("Executando a instrução SQL: \n" + instrucao);
 //     return database.executar(instrucao);
 // }
-function explicacao(idPersonagens) {
-    var instrucaoSql = `SELECT * FROM Personagens WHERE idPersonagens = ${idPersonagens}`;
+function ColocarPersonagens() {
+
+    var instrucaoSql = `SELECT * FROM Personagens;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-
-
 module.exports = {
     // cadastrar,
     // listar
-    explicacao
+    ColocarPersonagens
 };
