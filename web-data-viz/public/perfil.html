@@ -22,8 +22,9 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .profile-picture-label {
+        .profile-container img {
             display: inline-block;
+            margin: auto;
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -125,15 +126,13 @@
     <main class="conteudo-interno">
         <div class="conteudo-perfil">
             <div class="profile-container">
-                <label for="profile-picture" class="profile-picture-label">
-                    <img id="foto" src="" alt="Foto de perfil">
-                </label>
+                <img id="foto" src="" alt="Foto de perfil" width="60%" style="display: flex; align-items: center; justify-content: center;">
                 <input type="file" id="profile-picture" accept="image/*" style="display: none;">
 
                 <form>
-                    <input type="text" placeholder="Nome" id="nome">
-                    <input type="text" placeholder="Sobrenome" id="sobrenome">
-                    <input type="email" placeholder="E-mail" id="email">
+                    <input type="text" placeholder="Nome" id="nome" disabled>
+                    <input type="email" placeholder="E-mail" id="email" disabled>
+                    <input type="password" placeholder="Senha" id="senha" disabled>
                     <div class="buttons">
                         <button type="button" id="update-profile" class="update">Atualizar Perfil</button>
                         <button type="button" id="delete-profile" class="delete">Deletar Perfil</button>
@@ -177,6 +176,8 @@
 // });
 
 nome.value = sessionStorage.NOME_USUARIO
+email.value = sessionStorage.EMAIL_USUARIO
+senha.value = sessionStorage.SENHA_USUARIO
 foto.src = `img/${sessionStorage.FOTO_USUARIO}`
 // imagem.src = `img/forca8.png`;
 

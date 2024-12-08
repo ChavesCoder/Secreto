@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secreto</title>
+    <link rel="icon" href="img/S.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+*{
+    scroll-behavior: auto;
+}
+</style>
+
+<body onload="iniciar()">
+    <div class="sidebar">
+        <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
+        <!-- <button class="menu-toggle">&#9776;</button> -->
+
+        <nav class="menu">
+            <a href="devocional.html" class="menu-item">
+                <img src="img/mingcute--sun-line.png" style="width: 18%;">
+                <span>Devocional</span>
+            </a>
+            <a href="biblia.html" class="menu-item">
+                <img src="img/la--bible.png" style="width: 18%;" alt="">
+                <span>Bíblia</span>
+            </a>
+            <a href="personagens.html" class="menu-item">
+                <img src="img/octicon--people-16.png">
+                <span>Personagens</span>
+            </a>
+            <a href="minigames.html" class="menu-item">
+                <img src="img/icon-park-outline--puzzle.png">
+                <span>Mini-games</span>
+            </a>
+            <a href="perfil.html" class="menu-item">
+                <img src="img/ix--user-profile.png">
+                <span>Perfil</span>
+            </a>
+            <a href="entrar.html" class="menu-item logout">
+                <img src="img/mdi--logout.png">
+                <span>Sair</span>
+            </a> 
+        </nav>
+    </div>
+    <main class="conteudo-interno">
+        <div class="container-biblia">
+            <div id="bibleForm">
+                <div class="camposBiblia">
+                    <select id="livro" onchange="EscolherCapitulo()" required>
+                    </select>
+
+                    <select id="capitulo" onchange="Buscar()" required>
+                    </select>
+                </div>
+            </div>
+            <div class="textosBiblia">
+                <button id="Anterior" type="button" onclick="passarCapitulo(-1)"> <img src="img/weui--arrow-filled.png" width="80%" height="80%" style="transform: rotate(-180deg);""> </button>
+                <div id="output">
+                    <h2 id="versiculoReferencia"></h2>
+                    <div id="versiculosBiblia"></div>
+
+                </div>
+                <button id="Proximo" type="button" onclick="passarCapitulo(1)"> <img src="img/weui--arrow-filled.png" width="80%" height="80%"> </button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+<script src="js/biblia.js"></script>
