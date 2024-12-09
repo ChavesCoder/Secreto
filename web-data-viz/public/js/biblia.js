@@ -90,7 +90,7 @@
         var capitulos = LivrosECapitulos[livroSelecionado]; // O valor da select armazena a chave que é o livro que preciso e com o Objeto[Chave] o resultado é o valor que no caso é os capituloa
 
         // capitulo.innerHTML = '<option value="" disabled selected>Selecione um capítulo</option>'; //limpo meus capituos sempre que chamo a função, pois se eu já ter selecionado um livro antes e passado no for abaixo, sem limprar ele acumula a quantidade de opções 
-
+        capitulo.innerHTML = ''
         // Esse for é bem parecido com o for de livros, vai de 1 até a quantidade de capitulos que tenho no livro, crindo tag option, que recebe o valor do capitulo que é a tag i que está sendo incrementada a cada capitulo e receve o conteudo, por ultimo é adicionada na select com o id capitulo
         for (var i = 1; i <= capitulos; i++) {
             var option = document.createElement('option');

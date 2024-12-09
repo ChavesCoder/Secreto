@@ -12,14 +12,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<style>
-*{
-    scroll-behavior: auto;
-}
-</style>
 
-<body onload="iniciar()">
+<body>
     <div class="sidebar">
         <img src="img/LogoSecretoBranco.png" style=" padding: 20px 20px 0px 20px;">
         <!-- <button class="menu-toggle">&#9776;</button> -->
@@ -48,33 +44,53 @@
             <a href="entrar.html" class="menu-item logout">
                 <img src="img/mdi--logout.png">
                 <span>Sair</span>
-            </a> 
+            </a>
         </nav>
     </div>
     <main class="conteudo-interno">
-        <div class="container-biblia">
-            <div id="bibleForm">
-                <div class="camposBiblia">
-                    <select id="livro" onchange="EscolherCapitulo()" required>
-                    </select>
-
-                    <select id="capitulo" onchange="Buscar()" required>
-                    </select>
-                </div>
+        <div class="telaDashHistorico">
+            <div class="DashLegendaUsuario">
+                <h1>Dashboard Historico </h1>
+                <!-- <span id="nomeUsuario"></span> -->
             </div>
-            <div class="textosBiblia">
-                <button id="Anterior" type="button" onclick="passarCapitulo(-1)"> <img src="img/weui--arrow-filled.png" width="80%" height="80%" style="transform: rotate(-180deg);""> </button>
-                <div id="output">
-                    <h2 id="versiculoReferencia"></h2>
-                    <div id="versiculosBiblia"></div>
-
+            <div class="ContainerGraficos">
+                <div class="Grafico">
+                    <canvas id="meuGrafico" width="32%" height="40vh"></canvas>
                 </div>
-                <button id="Proximo" type="button" onclick="passarCapitulo(1)"> <img src="img/weui--arrow-filled.png" width="80%" height="80%"> </button>
+                <div class="Grafico">
+                    <canvas id="graficoRosquinha" width="32%" height="70%"></canvas>
+                </div>
+                <div class="Grafico">
+                    <canvas id="graficoRadar" width="32%" height="70vh"></canvas>
+                </div>
             </div>
         </div>
+        <div class="container-kpis">
+            <div class="kpi">
+                <span id="LidosGeral" class="Dadokpi">2</span>
+                <p>Devocionais <br>
+                    totais lidos</p>
+            </div>
+            <div class="kpi">
+                <span id="TotalMes" class="Dadokpi">2</span>
+                <p>Lidos <br>esse mês</p>
+            </div>
+            <div class="kpi">
+                <span id="Consecutivos" class="Dadokpi">2</span>
+                <p>Dias seguidos <br> lendo devocional</p>
+            </div>
+            <div class="kpi">
+                <span id="Dias" class="Dadokpi">2</span>
+                <p>Dias com a <br>
+                 Conta ativa
+                </p>
+            </div>
+        </div>
+
+
     </main>
 
 </body>
 
 </html>
-<script src="js/biblia.js"></script>
+<script src="js/dashUsuario.js"></script>

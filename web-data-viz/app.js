@@ -26,6 +26,8 @@ var personagensRouter = require("./src/routes/personagens");
 var explicacaoRouter = require("./src/routes/explicacao");
 var diarioRouter = require("./src/routes/diario");
 var colocarpersonagensRouter = require("./src/routes/colocarpersonagens");
+var dashboardhistoricoRouter = require("./src/routes/dashboardhistorico");
+var dashboardkpiRouter = require("./src/routes/dashboardkpi");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +46,8 @@ app.use("/personagens", personagensRouter);
 app.use("/explicacao", explicacaoRouter)
 app.use("/diario", diarioRouter);
 app.use("/colocarpersonagens", colocarpersonagensRouter);
+app.use("/dashboardhistorico", dashboardhistoricoRouter);
+app.use("/dashboardkpi", dashboardkpiRouter);
 
 
 app.listen(PORTA_APP, function () {
