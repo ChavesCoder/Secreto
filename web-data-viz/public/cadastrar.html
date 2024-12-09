@@ -202,9 +202,8 @@
             alert("Preencha todos os campos")
         } else {
             if (valido < 5) {
-                alert(`Não é possivel cadastrar ${valido}`)
+                alert(`Não é possivel cadastrar preencha todos os campos corretamente`)
             } else {
-                alert(`cadastrado ${valido}`)
                 // Enviando o valor da nova input
                 fetch("/usuarios/cadastrar", {
                     method: "POST",
